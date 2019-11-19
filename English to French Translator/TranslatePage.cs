@@ -38,6 +38,7 @@ namespace English_to_French_Translator
         private void Button1_Click(object sender, EventArgs e)
         {
             //Record
+           
             Choices sList = new Choices();
             sList.Add(new string[] { "hello", "how far", "Can you come tonight?" });
             Grammar gr = new Grammar(new GrammarBuilder(sList));
@@ -77,6 +78,14 @@ namespace English_to_French_Translator
             {
                 textBox1.Text = textBox1.Text + " " + e.Result.Text.ToString();
             }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            sRecognize.RecognizeAsyncStop();
+            //button1.Enabled = true;
+            //button5.Enabled = false;
+
         }
     }
 }
