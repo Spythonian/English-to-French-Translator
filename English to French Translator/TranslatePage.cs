@@ -37,9 +37,46 @@ namespace English_to_French_Translator
         
         private void Button1_Click(object sender, EventArgs e)
         {
+            //Record
+            Choices sList = new Choices();
+            sList.Add(new string[] { "hello", "how far", "Can you come tonight?" });
+            Grammar gr = new Grammar(new GrammarBuilder(sList));
+            try
+            {
+                sRecognize.RequestRecognizerUpdate();
+                sRecognize.LoadGrammar(gr);
+                sRecognize.SpeechRecognized += sRecognize_SpeechRecognized;
+                sRecognize.SetInputToDefaultAudioDevice();
+                sRecognize.RecognizeAsync(RecognizeMode.Multiple);
+
+            }
+            catch
+            {
+                return;
+            }
+            
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            //Speak
+           
             pBuilder.ClearContent();
             pBuilder.AppendText(textBox1.Text);
             sSynth.Speak(pBuilder);
+        }
+
+        private void sRecognize_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            //MessageBox.Show("Speech Recognized" + e.Result.Text.ToString());
+            if (e.Result.Text == "exit")
+            {
+                Application.Exit();
+            }
+            else
+            {
+                textBox1.Text = textBox1.Text + " " + e.Result.Text.ToString();
+            }
         }
     }
 }

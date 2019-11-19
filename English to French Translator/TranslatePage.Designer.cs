@@ -50,8 +50,9 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(109, 50);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
+            this.textBox1.Size = new System.Drawing.Size(159, 44);
             this.textBox1.TabIndex = 1;
             // 
             // button1
@@ -76,8 +77,9 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(109, 202);
+            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
+            this.textBox2.Size = new System.Drawing.Size(201, 44);
             this.textBox2.TabIndex = 1;
             // 
             // label2
@@ -97,6 +99,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Speak Text";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
