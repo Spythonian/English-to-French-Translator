@@ -37,7 +37,9 @@ namespace English_to_French_Translator
         
         private void Button1_Click(object sender, EventArgs e)
         {
-           
+            pBuilder.ClearContent();
+            pBuilder.AppendText(textBox1.Text);
+            sSynth.Speak(pBuilder);
         }
     }
 }
