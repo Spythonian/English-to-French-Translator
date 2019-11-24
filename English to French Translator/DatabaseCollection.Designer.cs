@@ -89,6 +89,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Add/Save";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -98,6 +99,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -107,6 +109,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -116,6 +119,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button5
             // 
@@ -144,6 +148,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DatabaseCollection";
             this.Text = "DatabaseCollection";
+            this.Load += new System.EventHandler(this.DatabaseCollection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

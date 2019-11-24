@@ -8,11 +8,13 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace English_to_French_Translator
 {
     public partial class TranslatePage : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
         public TranslatePage()
         {
             InitializeComponent();
@@ -86,6 +88,21 @@ namespace English_to_French_Translator
             //button1.Enabled = true;
             //button5.Enabled = false;
 
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM [dbo].[Table] WHERE english='" + textBox1.Text + "'";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            textBox1.DataSource = dt;
+
+            con.Close();
         }
     }
 }
