@@ -14,7 +14,7 @@ namespace English_to_French_Translator
 {
     public partial class TranslatePage : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
         public TranslatePage()
         {
             InitializeComponent();
@@ -92,17 +92,28 @@ namespace English_to_French_Translator
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM [dbo].[Table] WHERE english='" + textBox1.Text + "'";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            textBox1.DataSource = dt;
 
-            con.Close();
+            if (textBox1.Text != "")
+            {
+                SqlCommand cmd = new SqlCommand("SELECT french FROM [dbo].[Table] WHERE english='" + textBox1.Text + "'", con);
+                cmd.Parameters.AddWithValue("name", textBox1.Text);
+                SqlDataReader da = cmd.ExecuteReader();
+                while (da.Read())
+                {
+                    textBox2.Text = da.GetValue(0).ToString();
+
+                }
+                con.Close();
+            }
         }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
+        // [dbo].[Table]
     }
 }
