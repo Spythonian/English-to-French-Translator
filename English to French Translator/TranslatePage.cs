@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 
 namespace English_to_French_Translator
 {
+
     public partial class TranslatePage : Form
     {
         //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
@@ -65,7 +66,7 @@ namespace English_to_French_Translator
             //Speak
            
             pBuilder.ClearContent();
-            pBuilder.AppendText(textBox1.Text);
+            pBuilder.AppendText(textBox2.Text);
             sSynth.Speak(pBuilder);
         }
 

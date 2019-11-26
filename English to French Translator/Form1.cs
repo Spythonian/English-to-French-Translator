@@ -14,5 +14,24 @@ namespace English_to_French_Translator
         {
             InitializeComponent();
         }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            panelSlide.Width += 2;
+
+            if(panelSlide.Width> 208)
+            {
+                panelSlide.Width = 0;
+            }
+            if (panelSlide.Width < 0)
+            {
+                move = 2;
+            }
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            timer1.Start();
+        }
     }
 }
