@@ -12,9 +12,10 @@ namespace English_to_French_Translator
         [STAThread]
         static void Main()
         {
+            // Where the first page is determined
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ChoiceFeed());
         }
     }
 }

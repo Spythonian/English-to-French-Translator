@@ -25,6 +25,7 @@ namespace English_to_French_Translator
             tp.Focus();
         }
 
+        //Display data
         private void DatabaseCollection_Load(object sender, EventArgs e)
         {
             disp_data();
@@ -33,7 +34,10 @@ namespace English_to_French_Translator
         // ADD/SAVE LANGUAGE
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Length == 0 || this.textBox1.Text.Length == 0)
+            textBox1.Text = textBox1.Text.Replace("  ", " ");
+            textBox1.Text = textBox1.Text.Replace("  ", " ");
+
+            if (this.textBox1.Text.Length == 0 || this.textBox2.Text.Length == 0)
             {
                 MessageBox.Show("All fileds are compulsory!");
             } else
@@ -72,6 +76,7 @@ namespace English_to_French_Translator
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            //Delete database data
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -79,7 +84,10 @@ namespace English_to_French_Translator
             cmd.ExecuteNonQuery();
             con.Close();
             disp_data();
-
+            //Clear field input after deleting
+            textBox1.Text = "";
+            textBox2.Text = "";
+            //Pop up message
             MessageBox.Show("record deleted successfully!");
         }
 
@@ -89,11 +97,16 @@ namespace English_to_French_Translator
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "UPDATE [dbo].[Table] SET english='" + textBox2.Text+ "' WHERE english='" + textBox1.Text+"'";
+            // sql cmd to update db
+            cmd.CommandText = "UPDATE [dbo].[Table] SET french= '" + textBox2.Text + "' WHERE english='" + textBox1.Text+"'";
             cmd.ExecuteNonQuery();
             con.Close();
             disp_data();
 
+            //Clear field input after editing
+            textBox1.Text = "";
+            textBox2.Text = "";
+             //Pop up message
             MessageBox.Show("record updated successfully!");
         }
 

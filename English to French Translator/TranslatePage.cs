@@ -29,7 +29,6 @@ namespace English_to_French_Translator
         {
             ChoiceFeed tp = new ChoiceFeed();
             tp.Show();
-            this.Hide();
             tp.Focus();
         }
 
@@ -88,21 +87,27 @@ namespace English_to_French_Translator
             sRecognize.RecognizeAsyncStop();
             //button1.Enabled = true;
             //button5.Enabled = false;
+            // Clearing Input
+            textBox1.Text = "";
+            textBox2.Text = "";
 
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            //Connect to databse
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
 
             if (textBox1.Text != "")
             {
+                //Search database for english words
                 SqlCommand cmd = new SqlCommand("SELECT french FROM [dbo].[Table] WHERE english='" + textBox1.Text + "'", con);
                 cmd.Parameters.AddWithValue("name", textBox1.Text);
                 SqlDataReader da = cmd.ExecuteReader();
                 while (da.Read())
                 {
+                    //Output the french
                     textBox2.Text = da.GetValue(0).ToString();
 
                 }
