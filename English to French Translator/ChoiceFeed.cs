@@ -43,7 +43,7 @@ namespace English_to_French_Translator
             TranslatePage tp = new TranslatePage();
             tp.Show();
             tp.Focus();
-            this.Close();
+            this.Hide();
         }
     }
 }

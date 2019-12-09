@@ -30,6 +30,7 @@ namespace English_to_French_Translator
             ChoiceFeed tp = new ChoiceFeed();
             tp.Show();
             tp.Focus();
+            this.Close();
         }
 
         private void TranslatePage_Load(object sender, EventArgs e)

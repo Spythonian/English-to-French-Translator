@@ -21,8 +21,8 @@ namespace English_to_French_Translator
         {
             ChoiceFeed tp = new ChoiceFeed();
             tp.Show();
-            this.Hide();
             tp.Focus();
+            this.Close();
         }
 
         //Display data
