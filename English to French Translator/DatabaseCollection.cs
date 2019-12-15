@@ -35,7 +35,9 @@ namespace English_to_French_Translator
         private void Button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = textBox1.Text.Replace("  ", " ");
-            textBox1.Text = textBox1.Text.Replace("  ", " ");
+            textBox2.Text = textBox2.Text.Replace("  ", " ");
+            //textBox1.Text = textBox1.Text.Trim();
+            //textBox2.Text = textBox2.Text.Trim();
 
             if (this.textBox1.Text.Length == 0 || this.textBox2.Text.Length == 0)
             {

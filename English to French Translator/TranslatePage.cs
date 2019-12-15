@@ -38,28 +38,6 @@ namespace English_to_French_Translator
 
         }
         
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            //Record
-           
-            Choices sList = new Choices();
-            sList.Add(new string[] { "hello", "how far", "Can you come tonight?" });
-            Grammar gr = new Grammar(new GrammarBuilder(sList));
-            try
-            {
-                sRecognize.RequestRecognizerUpdate();
-                sRecognize.LoadGrammar(gr);
-                sRecognize.SpeechRecognized += sRecognize_SpeechRecognized;
-                sRecognize.SetInputToDefaultAudioDevice();
-                sRecognize.RecognizeAsync(RecognizeMode.Multiple);
-
-            }
-            catch
-            {
-                return;
-            }
-            
-        }
 
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -83,6 +61,7 @@ namespace English_to_French_Translator
             }
         }
 
+        /*
         private void Button5_Click(object sender, EventArgs e)
         {
             sRecognize.RecognizeAsyncStop();
@@ -92,7 +71,9 @@ namespace English_to_French_Translator
             textBox1.Text = "";
             textBox2.Text = "";
 
-        }
+        } 
+        
+        */
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -124,3 +105,33 @@ namespace English_to_French_Translator
         // [dbo].[Table]
     }
 }
+
+
+/*
+  //RECORD BUTTON
+           
+            Choices sList = new Choices();
+            sList.Add(new string[] { "hello", "how far", "Can you come tonight?" });
+            Grammar gr = new Grammar(new GrammarBuilder(sList));
+            try
+            {
+                sRecognize.RequestRecognizerUpdate();
+                sRecognize.LoadGrammar(gr);
+                sRecognize.SpeechRecognized += sRecognize_SpeechRecognized;
+                sRecognize.SetInputToDefaultAudioDevice();
+                sRecognize.RecognizeAsync(RecognizeMode.Multiple);
+
+            }
+            catch
+            {
+                return;
+            }
+    // STOP BUTTON
+
+        sRecognize.RecognizeAsyncStop();
+            //button1.Enabled = true;
+            //button5.Enabled = false;
+            // Clearing Input
+            textBox1.Text = "";
+            textBox2.Text = "";
+ */
