@@ -15,7 +15,7 @@ namespace English_to_French_Translator
         {
             Thread trd = new Thread(new ThreadStart(formRun));
             trd.Start();
-            Thread.Sleep(10000);
+            Thread.Sleep(100);
             InitializeComponent();
             trd.Abort();
         }
@@ -31,7 +31,8 @@ namespace English_to_French_Translator
         {
 
             //Button to the database
-            DatabaseCollection db = new DatabaseCollection();
+            //DatabaseCollection db = new DatabaseCollection();
+            AdminLogin db = new AdminLogin();
             db.Show();
             this.Hide();
             db.Focus();

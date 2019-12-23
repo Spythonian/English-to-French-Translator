@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.languageSelection = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +85,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(419, 205);
+            this.button3.Location = new System.Drawing.Point(419, 223);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
@@ -102,11 +103,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
+            // languageSelection
+            // 
+            this.languageSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.languageSelection.FormattingEnabled = true;
+            this.languageSelection.Location = new System.Drawing.Point(536, 218);
+            this.languageSelection.Name = "languageSelection";
+            this.languageSelection.Size = new System.Drawing.Size(183, 21);
+            this.languageSelection.TabIndex = 3;
+            this.languageSelection.SelectedIndexChanged += new System.EventHandler(this.LanguageSelection_SelectedIndexChanged);
+            // 
             // TranslatePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -131,5 +143,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox languageSelection;
     }
 }

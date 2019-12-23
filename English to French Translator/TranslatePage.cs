@@ -16,36 +16,54 @@ namespace English_to_French_Translator
     public partial class TranslatePage : Form
     {
         //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Spythonian\Documents\tldb.mdf;Integrated Security=True;Connect Timeout=30");
+
+        SpeechSynthesizer speech;
         public TranslatePage()
         {
             InitializeComponent();
+            speech = new SpeechSynthesizer();
         }
 
         // Implementing the Speech Reference
+
         SpeechSynthesizer sSynth = new SpeechSynthesizer();
         PromptBuilder pBuilder = new PromptBuilder();
         SpeechRecognitionEngine sRecognize = new SpeechRecognitionEngine();
+        
         private void Button4_Click(object sender, EventArgs e)
         {
             ChoiceFeed tp = new ChoiceFeed();
             tp.Show();
             tp.Focus();
             this.Close();
+            
         }
 
         private void TranslatePage_Load(object sender, EventArgs e)
         {
-
+            foreach (var voice in speech.GetInstalledVoices())
+            {
+                languageSelection.Items.Add(voice.VoiceInfo.Name);
+               // MessageBox.Show(speech.);
+            }
         }
         
 
         private void Button3_Click(object sender, EventArgs e)
         {
             //Speak
-           
+            /*           
             pBuilder.ClearContent();
             pBuilder.AppendText(textBox2.Text);
             sSynth.Speak(pBuilder);
+            */
+
+            if (textBox2.Text != "")
+            {
+                speech.SelectVoice(languageSelection.Text);
+                speech.SpeakAsync(textBox2.Text);
+            }
+           
         }
 
         private void sRecognize_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -100,6 +118,11 @@ namespace English_to_French_Translator
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             
+            
+        }
+
+        private void LanguageSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
         }
         // [dbo].[Table]
